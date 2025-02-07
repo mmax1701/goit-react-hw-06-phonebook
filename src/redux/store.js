@@ -1,5 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import persistedReducer, { contactFormReducer } from './contactFormReducer';
+import persistStore from 'redux-persist/es/persistStore';
 
-const store = configureStore({
-  reducer: rootReducer,
+export const store = configureStore({
+  reducer: {
+    contactForm: persistedReducer,
+  },
 });
+
+export const persistor = persistStore(store);
